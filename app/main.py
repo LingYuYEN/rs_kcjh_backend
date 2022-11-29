@@ -5,6 +5,7 @@ import uvicorn
 from pydantic import BaseModel
 import datetime
 import access_jsonfile
+from send_mail import send_mail
 
 app = FastAPI()
 
@@ -349,6 +350,11 @@ async def post_repair_info(
     repair_info_dict['id'] = repair_infos_len + 1
     repair_infos.append(repair_info_dict)
     access_jsonfile.write_jsonfile(repair_info_dict)
+    send_mail(
+        "yuxp0130@gmail.com",
+        repair_info_dict['school'],
+        "申告學校：" + str(repair_info_dict['school']) + "\n申告內容：" + str(repair_info_dict['repair_description']) + "\n聯絡電話：" + str(repair_info_dict['tel'])
+    )
     return access_jsonfile.load_jsonfile()
 
 
