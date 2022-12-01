@@ -351,9 +351,10 @@ async def post_repair_info(
     repair_infos.append(repair_info_dict)
     access_jsonfile.write_jsonfile(repair_info_dict)
     send_mail(
-        "yuxp0130@gmail.com",
+        "ruruwu1127@gmail.com",
+        "yuxp0130@gmail.com, fish33@swell.com.tw",
         repair_info_dict['school'],
-        "申告學校：" + str(repair_info_dict['school']) + "\n申告內容：" + str(repair_info_dict['repair_description']) + "\n聯絡電話：" + str(repair_info_dict['tel'])
+        "申告學校：" + str(repair_info_dict['school']) + "\n申告內容：" + str(repair_info_dict['repair_description']) + "\n聯絡電話：" + str(repair_info_dict['tel'] + "\n\n\n公正案報修系統郵件通知")
     )
     return access_jsonfile.load_jsonfile()
 
